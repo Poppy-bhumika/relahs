@@ -1,0 +1,67 @@
+GraphicsWindow.Show()
+GraphicsWindow.Height=600
+GraphicsWindow.Width=600
+GraphicsWindow.Left=400
+GraphicsWindow.Top=50
+GraphicsWindow.KeyDown=KeyPressed
+PlayerX=100
+PlayerY=0
+
+Row[1]="110111111111"
+Row[2]="100100000001"
+Row[3]="110101101101"
+Row[4]="100000101101"
+Row[5]="101101000001"
+Row[6]="101011011111"
+Row[7]="101008001001"
+Row[8]="101010100011"
+Row[9]="101011011001"
+Row[10]="101000800101"
+Row[11]="100110110101"
+Row[12]="111111110111"
+
+GraphicsWindow.BrushColor="Green"
+
+For r=1 to 12
+For c=1 to 12
+If Text. GetSubText (Row[r], c, 1)="1" Then
+GraphicsWindow. FillRectangle( (c*50)-50, (r*50)-50, 50, 50)
+EndIf
+Endfor
+Endfor
+
+
+DrawPlayer()
+
+Sub DrawPlayer
+GraphicsWindow.BrushColor="Red"
+GraphicsWindow.FillRectangle(PlayerX, PlayerY, 50, 50)
+If PlayerX=400 And PlayerY=550 Then
+  GraphicsWindow.ShowMessage("Well done!","Maze Completed")
+  EndIf
+EndSub
+
+Sub RemovePlayer
+GraphicsWindow.BrushColor="white"
+GraphicsWindow.FillRectangle(PlayerX, PlayerY, 50, 50)
+EndSub
+
+Sub KeyPressed
+If GraphicsWindow. LastKey="Up" And PlayerY>0 And GraphicsWindow.GetPixel(PlayerX+25,PlayerY-25)<>"0000FF" Then
+RemovePlayer()
+PlayerY=PlayerY-50
+DrawPlayer()
+ElseIf GraphicsWindow. LastKey="Down" And PlayerY<550 And GraphicsWindow.GetPixel(PlayerX+25,PlayerY+75)<>"0000FF" then
+RemovePlayer()
+PlayerY=PlayerY+50
+DrawPlayer()
+elseif GraphicsWindow. LastKey="Left" and PlayerX>0 And GraphicsWindow.GetPixel(PlayerX-25,PlayerY+25)<>"0000FF" then
+RemovePlayer()
+PlayerX=PlayerX-50
+DrawPlayer()
+elseif GraphicsWindow. LastKey="Right" and PlayerX<550 And GraphicsWindow.GetPixel(PlayerX+75,PlayerY+25)<>"0000FF"then
+RemovePlayer()
+PlayerX=PlayerX+50
+DrawPlayer()
+EndIf
+EndSub
