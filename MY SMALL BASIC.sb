@@ -1,0 +1,46 @@
+TextWindow.WriteLine("Hello")
+TextWindow.Pause()
+TextWindow.WriteLine("I am SB (Small Basic)")
+TextWindow.PauseWithoutMessage()
+TextWindow.WriteLine("I am small now, But I can do some calculations")
+TextWindow.PauseWithoutMessage()
+TextWindow.WriteLine("Here are they")
+TextWindow.WriteLine("1:Addition")
+TextWindow.WriteLine("2:Subtraction")
+TextWindow.WriteLine("3:Multliplication")
+TextWindow.WriteLine("4:Division")
+TextWindow.PauseWithoutMessage()
+TextWindow.WriteLine("If you want to do me this calculations, then enter the number which is written beside them")
+q :
+a = TextWindow.ReadNumber()
+If a = 1 Then
+  TextWindow.WriteLine("Enter first number")
+  a1= TextWindow.ReadNumber()
+  TextWindow.WriteLine("Enter second number")
+  a2= TextWindow.ReadNumber()
+  TextWindow.WriteLine(a1 + a2)
+ElseIf a = 2 then
+  TextWindow.WriteLine("Enter first number")
+  b1= TextWindow.ReadNumber()
+  TextWindow.WriteLine("Enter second number")
+  b2= TextWindow.ReadNumber()
+  TextWindow.WriteLine(b1 - b2)
+ElseIf a = 3 Then
+  TextWindow.WriteLine("Enter first number")
+  c1= TextWindow.ReadNumber()
+  TextWindow.WriteLine("Enter second number")
+  c2= TextWindow.ReadNumber()
+  TextWindow.WriteLine(c1 * c2)
+elseif  a = 4 Then
+  TextWindow.WriteLine("Enter first number")
+  d1= TextWindow.ReadNumber()
+  TextWindow.WriteLine("Enter second number")
+  d2= TextWindow.ReadNumber()
+  TextWindow.WriteLine(d1 / d2)
+Else
+  TextWindow.WriteLine("I don't know")
+  TextWindow.WriteLine("Write it again")
+  Goto q
+EndIf
+TextWindow.WriteLine("Any other?")
+Goto q
